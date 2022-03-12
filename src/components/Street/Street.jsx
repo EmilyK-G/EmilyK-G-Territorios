@@ -1,7 +1,4 @@
 import React from 'react';
-import { useEffect } from 'react';
-import { getDocs, collection } from "firebase/firestore";
-import db from '../../firebase';
 
 function Street() {
     const streets_t11 = ["Bedford Ave", "Cedar St", "Mize Ct", "Marshall Ct", "Cooper Ct", "Uniondale Ave", "Hempstead Blvd", "Maple Ave", "Durya Ave", "Fenimore Ave", "Greengrove Ave"]

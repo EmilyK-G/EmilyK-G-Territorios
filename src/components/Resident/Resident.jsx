@@ -5,17 +5,21 @@ import {
     addDoc
 } from "firebase/firestore";
 import ResidentDetails from '../ResidentDetails/ResidentDetails';
+import PreviewBtn from '../PreviewBtn/PreviewBtn';
 
 function Resident() {
+    const [preview, setPreview] = useState(false);
+    const [newResObj, setNewResObj] = useState({});
+    const [newResArray, setNewResArray] = useState([])
+    const [street, setStreet] = useState("New St");
+    const [house, setHouse] = useState("");
     const [addResident, setAddResident] = useState(false);
     const residents = {
         Street: "Cedar St",
         Resident: [],
         House: "",
     };
-    const newResArray = [];
-
-
+    
     useEffect(()=>{
          //get collection data
          getDocs(colRef).then( (snapshot) => {
@@ -30,13 +34,12 @@ function Resident() {
          })
      }, [])
     
-
     function handleSubmitClick() {
-      console.log(newResArray);
       residents.House = document.querySelector('.add_house_js').value;
       residents.Resident = newResArray;
       addDoc(colRef, residents)
     }
+
   return (
       <>
         <form>
@@ -45,27 +48,38 @@ function Resident() {
               <input 
                 type="text" 
                 //value={residents.House} 
-                //onChange={e => setResidents({ ...residents, House: e.target.value})} 
+                onChange={e => setHouse(e.target.value)} 
                 className="form-control add_house_js" 
                 name="HouseNumber" 
                 id="formHouseNumber" 
                 placeholder="Ex. 144"/>
             </div>
             <div className="form-group">
-              {addResident ? <ResidentDetails newResArray={newResArray}/> : 
+              {addResident ? <ResidentDetails setNewResArray={setNewResArray}/> : 
                 <div className="form-group col-auto my-1">
                   <button 
                     type="button" 
                     className="btn btn-primary"
-                    onClick={() => setAddResident(false ? false : true)}>
+                    onClick={() => setAddResident(true)}>
                       Click to add Resident
                   </button>
               </div>}  
             </div>
-            
+            {preview ? <PreviewBtn newResArray={newResArray} house={house} street={street}/> : "..." }
             <div className="col-auto my-1">
               <button 
-                className="btn btn-primary" 
+                className="btn btn-info" 
+                type="button" 
+                onClick={(e) => {
+                    e.preventDefault()
+                    setPreview(!preview);
+                }}>
+                    Preview
+                </button>
+            </div>
+            <div className="col-auto my-1">
+              <button 
+                className="btn btn-success" 
                 type="submit" 
                 onClick={(e) => {
                     e.preventDefault()

@@ -7,7 +7,8 @@ function ResidentDetails(props) {
     const phone = document.querySelector('.add_phone_js').value;
     
     //sending Resident Array to resident state on parent component
-    props.newResArray.push({Name: name, Phone: phone});
+    props.setNewResArray(prev => ([...prev, { Name: name, Phone: phone}]));
+    
   }
   return (
       <>
