@@ -7,15 +7,13 @@ import {
 import ResidentDetails from '../ResidentDetails/ResidentDetails';
 import PreviewBtn from '../PreviewBtn/PreviewBtn';
 
-function Resident() {
+function Resident(props) {
     const [preview, setPreview] = useState(false);
-    const [newResObj, setNewResObj] = useState({});
-    const [newResArray, setNewResArray] = useState([])
-    const [street, setStreet] = useState("New St");
+    const [newResArray, setNewResArray] = useState([]);
     const [house, setHouse] = useState("");
     const [addResident, setAddResident] = useState(false);
     const residents = {
-        Street: "Cedar St",
+        Street: "",
         Resident: [],
         House: "",
     };
@@ -35,6 +33,7 @@ function Resident() {
      }, [])
     
     function handleSubmitClick() {
+      residents.Street = props.street; //from App.js
       residents.House = document.querySelector('.add_house_js').value;
       residents.Resident = newResArray;
       addDoc(colRef, residents)
@@ -65,7 +64,7 @@ function Resident() {
                   </button>
               </div>}  
             </div>
-            {preview ? <PreviewBtn newResArray={newResArray} house={house} street={street}/> : "..." }
+            {preview ? <PreviewBtn newResArray={newResArray} house={house} street={props.street}/> : "..." }
             <div className="col-auto my-1">
               <button 
                 className="btn btn-info" 

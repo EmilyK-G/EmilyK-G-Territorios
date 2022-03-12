@@ -1,13 +1,15 @@
+import React, {useState} from 'react';
 import Street from './components/Street/Street'
 import Resident from './components/Resident/Resident';
 import './App.css';
 
 function App() {
+  const [street, setStreet] = useState('');
   return (
     <div className="App">
       <header className="App-header">
-        <Street />
-        <Resident/>
+        <Street setStreet={setStreet}/>
+        <Resident street={street}/>
       </header>
     </div>
   );
