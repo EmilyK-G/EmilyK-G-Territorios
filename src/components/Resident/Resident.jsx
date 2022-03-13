@@ -37,16 +37,20 @@ function Resident(props) {
       residents.House = document.querySelector('.add_house_js').value;
       residents.Resident = newResArray;
       addDoc(colRef, residents)
+      .then(() => {
+        document.querySelector('.resident_form_js').reset();
+        setNewResArray([]);
+      })
+      .catch(e => console.log(e.message))
     }
 
   return (
       <>
-        <form>
+        <form className="resident_form_js">
             <div className="form-group">
               <label htmlFor="formHouseNumber">House Number</label>
               <input 
                 type="text" 
-                //value={residents.House} 
                 onChange={e => setHouse(e.target.value)} 
                 className="form-control add_house_js" 
                 name="HouseNumber" 
@@ -67,13 +71,13 @@ function Resident(props) {
             {preview ? <PreviewBtn newResArray={newResArray} house={house} street={props.street}/> : "..." }
             <div className="col-auto my-1">
               <button 
-                className="btn btn-info" 
+                className={"btn" + (preview ? " btn-secondary" : " btn-info")} 
                 type="button" 
                 onClick={(e) => {
                     e.preventDefault()
                     setPreview(!preview);
                 }}>
-                    Preview
+                    {(preview ? "Close preview" : "Preview")}
                 </button>
             </div>
             <div className="col-auto my-1">
@@ -83,6 +87,8 @@ function Resident(props) {
                 onClick={(e) => {
                     e.preventDefault()
                     handleSubmitClick()
+                    setAddResident(false)
+                    setPreview(false)
                 }}>
                     Submit form
                 </button>

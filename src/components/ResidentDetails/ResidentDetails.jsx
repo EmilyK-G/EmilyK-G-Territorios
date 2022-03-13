@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React from 'react';
+import './ResidentDetails.css';
 function ResidentDetails(props) {
   
   function handleAddResidentClick() {
@@ -8,33 +8,35 @@ function ResidentDetails(props) {
     
     //sending Resident Array to resident state on parent component
     props.setNewResArray(prev => ([...prev, { Name: name, Phone: phone}]));
-    
+    document.querySelector('.add_name_js').value = "";
+    document.querySelector('.add_phone_js').value = "";
   }
   return (
-      <>
-        <div>ResidentDetails</div>
+      <div className="resident_details_bgr mt-4 p-1">
+        <div className="resident_details_title">Resident Details</div>
         
-        <div className="form-group">
+        <div className="form-group resident_details_body">
           <label htmlFor="formResidentName">Resident Name</label>
           <input 
             type="text" 
-            //value={residents.Name} 
-            //onChange={e => setResArray({...resArray, Name: e.target.value})} 
             className="form-control add_name_js" 
             name="ResidentName" 
             id="formResidentName" 
-            placeholder="Ex. Juan Perez"/>
-        </div>
-        <div className="form-group">
+            placeholder="Ex. Juan Perez"
+            autoFocus/>
+
           <label htmlFor="formPhoneNumber">Phone Number</label>
-          <input 
-            type="text" 
-            //value={residents.Resident.Phone[1]}
-            //onChange={e => setResArray({...resArray, Phone: e.target.value})}
-            className="form-control add_phone_js" 
-            name="PhoneNumber" 
-            id="formPhoneNumber" 
-            placeholder="Ex. 5162222222"/>
+          <div className="input-group mb-3">
+            <input 
+              type="text" 
+              className="form-control add_phone_js" 
+              name="PhoneNumber" 
+              id="formPhoneNumber" 
+              placeholder="Ex. 5161234567"/>
+              <div className="input-group-append">
+                <button className="btn btn-secondary" type="button" id="button-addon2">+</button>
+              </div>
+          </div>
         </div>
 
         <div className="col-auto my-1">
@@ -47,7 +49,7 @@ function ResidentDetails(props) {
                 Add Resident
             </button>
         </div>
-      </>
+      </div>
   )
 }
 

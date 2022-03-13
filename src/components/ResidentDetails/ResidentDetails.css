@@ -1,0 +1,14 @@
+div.form-group > div.input-group.mb-3 {
+    align-items: end;
+}
+.resident_details_bgr {
+    background-color: rgba(0, 52, 97, 0.397);
+    border-radius: 20px;
+}
+.resident_details_title {
+    font-size: 1.6rem;
+    border-bottom: 2px solid #f0f8ff;
+}
+.resident_details_body {
+    background-color: #f0f8ff49;
+}
