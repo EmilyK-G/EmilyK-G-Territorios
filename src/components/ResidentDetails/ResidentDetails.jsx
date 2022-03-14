@@ -13,7 +13,6 @@ function ResidentDetails(props) {
   }
   return (
       <div className="resident_details_bgr mt-4 p-1">
-        <div className="resident_details_title">Resident Details</div>
         
         <div className="form-group resident_details_body">
           <label htmlFor="formResidentName">Resident Name</label>
@@ -43,7 +42,7 @@ function ResidentDetails(props) {
           <button 
             className="btn btn-primary" 
             type="button" onClick={(e) => {
-                e.preventDefault()
+                // e.preventDefault()
                 handleAddResidentClick()
             }}>
                 Add Resident

@@ -4,7 +4,7 @@ import Resident from './components/Resident/Resident';
 import './App.css';
 
 function App() {
-  const [street, setStreet] = useState('Street not selected');
+  const [street, setStreet] = useState("--no-street--");
   return (
     <div className="App">
       <header className="App-header">

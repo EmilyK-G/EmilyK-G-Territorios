@@ -6,12 +6,14 @@ import {
 } from "firebase/firestore";
 import ResidentDetails from '../ResidentDetails/ResidentDetails';
 import PreviewBtn from '../PreviewBtn/PreviewBtn';
+import "./Resident.css";
 
 function Resident(props) {
     const [preview, setPreview] = useState(false);
     const [newResArray, setNewResArray] = useState([]);
     const [house, setHouse] = useState("");
     const [addResident, setAddResident] = useState(false);
+    const [addHouseAlert, setAddHouseAlert] = useState(false);
     const residents = {
         Street: "",
         Resident: [],
@@ -55,15 +57,17 @@ function Resident(props) {
                 className="form-control add_house_js" 
                 name="HouseNumber" 
                 id="formHouseNumber" 
-                placeholder="Ex. 144"/>
+                placeholder="Ex. 144"
+                required />
             </div>
             <div className="form-group">
               {addResident ? <ResidentDetails setNewResArray={setNewResArray}/> : 
                 <div className="form-group col-auto my-1">
+                  {addHouseAlert ? <p className="add_house_alert">Add a House Number</p> : ""}
                   <button 
                     type="button" 
                     className="btn btn-primary"
-                    onClick={() => setAddResident(true)}>
+                    onClick={() => {(house === "") ? setAddHouseAlert(true) : setAddResident(true)}}>
                       Click to add Resident
                   </button>
               </div>}  
