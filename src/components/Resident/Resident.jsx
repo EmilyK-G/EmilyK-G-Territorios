@@ -13,6 +13,7 @@ function Resident(props) {
     const [newResArray, setNewResArray] = useState([]);
     const [house, setHouse] = useState("");
     const [addResident, setAddResident] = useState(false);
+    const [phoneArray, setPhoneArray] = useState([]); //From Resident Details
     const [addHouseAlert, setAddHouseAlert] = useState(false);
     const residents = {
         Street: "",
@@ -46,6 +47,12 @@ function Resident(props) {
       .catch(e => console.log(e.message))
     }
 
+    function handleEnterKey(e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+      }
+    }
+
   return (
       <>
         <form className="resident_form_js">
@@ -58,21 +65,22 @@ function Resident(props) {
                 name="HouseNumber" 
                 id="formHouseNumber" 
                 placeholder="Ex. 144"
+                onKeyPress={(e)=>handleEnterKey(e)}
                 required />
             </div>
             <div className="form-group">
-              {addResident ? <ResidentDetails setNewResArray={setNewResArray}/> : 
+              {addResident ? <ResidentDetails setNewResArray={setNewResArray} setPhoneArray={setPhoneArray} phoneArray={phoneArray}/> : 
                 <div className="form-group col-auto my-1">
                   {addHouseAlert ? <p className="add_house_alert">Add a House Number</p> : ""}
                   <button 
                     type="button" 
                     className="btn btn-primary"
                     onClick={() => {(house === "") ? setAddHouseAlert(true) : setAddResident(true)}}>
-                      Click to add Resident
+                      New Resident List
                   </button>
               </div>}  
             </div>
-            {preview ? <PreviewBtn newResArray={newResArray} house={house} street={props.street}/> : "..." }
+            {preview ? <PreviewBtn newResArray={newResArray} house={house} street={props.street} phoneArray={phoneArray}/> : "..." }
             <div className="col-auto my-1">
               <button 
                 className={"btn" + (preview ? " btn-secondary" : " btn-info")} 
