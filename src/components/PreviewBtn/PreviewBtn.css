@@ -1,3 +1,7 @@
 .hide_deleted {
     display: none;
 }
+.previewBtn_description_p{
+    letter-spacing: -1px;
+    color: rgb(255, 255, 255);
+}

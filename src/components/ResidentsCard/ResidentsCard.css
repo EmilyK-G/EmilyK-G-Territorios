@@ -2,11 +2,14 @@
     display: none;
 }
 div.class-body > ul > li {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     list-style: none;
     background-color: transparent;
     color: inherit;
 }
 div.class-body > .resident_card_address {
-    font-size: 0.6rem;
+    font-size: 0.8rem;
+}
+.phone_card_p {
+    font-size: 0.8rem;
 }

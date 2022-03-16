@@ -44,7 +44,9 @@ function Resident(props) {
         document.querySelector('.resident_form_js').reset();
         setNewResArray([]);
       })
-      .catch(e => console.log(e.message))
+      .catch(e => console.log(e.message));
+      setAddHouseAlert(false);
+      setHouse("")
     }
 
     function handleEnterKey(e) {

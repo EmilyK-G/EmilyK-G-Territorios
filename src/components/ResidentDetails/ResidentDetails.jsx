@@ -1,11 +1,8 @@
-import { limit } from 'firebase/firestore';
 import React, {useState} from 'react';
 import './ResidentDetails.css';
 function ResidentDetails(props) {
   const [phone, setPhone] = useState("");
-  const [name, setName] = useState("No name");
-  const [disabled, setDisabled] = useState(false)
-  // const [phoneAdded, setPhoneAdded] = useState(false);
+  const [name, setName] = useState("");
   const [addResident, setAddResident] = useState(false);
   
 
@@ -18,7 +15,7 @@ function ResidentDetails(props) {
   function handleAddResidentClick() {
     //sending Resident Array to resident state on parent component
     props.setNewResArray(prev => ([...prev, { Name: name, Phone: props.phoneArray}])); 
-    setName("No name");
+    setName("");
     setPhone("");
     props.setPhoneArray([]);
   }
@@ -39,13 +36,14 @@ function ResidentDetails(props) {
             className="form-control add_name_js" 
             name="ResidentName" 
             id="formResidentName" 
+            value={name} 
             onChange={(e)=> setName(e.target.value)}
             placeholder="Ex. Juan Perez"
             autoFocus
             onKeyPress={(e)=> handleEnterKey(e)}
             onFocus={()=> setAddResident(false)}/>
 
-          <label htmlFor="formPhoneNumber">Phone Number</label>
+          <label htmlFor="formPhoneNumber" className="phone_number_label">Phone Number</label>
           <ul className="list-group">{props.phoneArray.map((phos, i)=>{return <li className={"list-group-item"} key={i}>{phos}</li>})}</ul>{/*shows to user the phones added for the specific resident*/}
           <div className="input-group mb-3">
             <input 

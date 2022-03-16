@@ -27,7 +27,7 @@ function ResidentsCard(props) {
             <div className="class-body">
 
                 <p className="card-title resident_card_address">{props.house} {props.street}</p>
-                <p>Phone #:</p>
+                <p className="phone_card_p">Phone #:</p>
                 {phone()}
             <button 
                 type="button" 
