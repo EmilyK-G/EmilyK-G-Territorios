@@ -1,9 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
+import "./Street.css";
 
 function Street(props) {
-     
-    const streets_t11 = ["Bedford Ave", "Cedar St", "Mize Ct", "Marshall Ct", "Cooper Ct", "Uniondale Ave", "Hempstead Blvd", "Maple Ave", "Durya Ave", "Fenimore Ave", "Greengrove Ave"];
-    
+
+    // useEffect(()=>{
+    //     console.log(props.territorio)
+    // },[props.territorio])
+
   return (
     <>
         <form>
@@ -12,12 +15,10 @@ function Street(props) {
                 <label className="mr-sm-2">Street</label>
                 <select className="form-control select_street_js" onChange={e => props.setStreet(e.target.value)}>
                     <option value="Select street" defaultValue >Select Street</option>
-                    {streets_t11.map((str, i) => {
+                    {props.territorio.map((str, i) => {
                         return <option value={`${str}. Uniondale, NY 11550`} key={i}>{str}</option>
                     })}
                 </select>
-                </div>
-                <div className="col-auto my-1">
                 </div>
             </div>
         </form>
