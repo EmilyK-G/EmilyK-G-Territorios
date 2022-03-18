@@ -12,7 +12,6 @@ function ResidentsCard(props) {
   }
   const phone = () => {
     if (props.res.Phone) {
-      console.log(props.res.Phone);
       const phones = props.res.Phone.map((pho, i)=>{
         return <li className="list-group-item" key={i}>{pho}</li>
       });

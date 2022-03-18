@@ -28,7 +28,7 @@ function Resident(props) {
          snapshot.docs.forEach((doc)=> {
              addresses.push({ ...doc.data(), id: doc.id })
          })
-         console.log(addresses)
+        //  console.log(addresses)
          })
          .catch(err => {
             console.log(err.message)
