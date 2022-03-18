@@ -19,6 +19,7 @@ function Resident(props) {
         Street: "",
         Resident: [],
         House: "",
+        Territory: ""
     };
     
     useEffect(()=>{
@@ -39,6 +40,7 @@ function Resident(props) {
       residents.Street = props.street; //from App.js
       residents.House = document.querySelector('.add_house_js').value;
       residents.Resident = newResArray;
+      residents.Territory = props.terrSelected;
       addDoc(colRef, residents)
       .then(() => {
         document.querySelector('.resident_form_js').reset();

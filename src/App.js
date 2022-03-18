@@ -8,7 +8,7 @@ function App() {
   const [street, setStreet] = useState("--no-street--");
   const [isTerr, setIsTerr] = useState(false);
   const [territorio, setTerritorio] = useState(["none"]);
-
+  const [terrSelected, setTerrSelected] = useState("");
   // useEffect(()=>{
   //   console.log(territorio)
   // }, [territorio])
@@ -19,8 +19,8 @@ function App() {
       <header className="App-header">
         {isTerr ? 
           <><Street setStreet={setStreet} street={street} isTerr={isTerr} territorio={territorio}/>
-          <Resident street={street}/></> : 
-          <Territorios setTerritorio={setTerritorio} setIsTerr={setIsTerr} />}
+          <Resident street={street} terrSelected={terrSelected}/></> : 
+          <Territorios setTerritorio={setTerritorio} setIsTerr={setIsTerr} setTerrSelected={setTerrSelected}/>}
       </header>
     </div>
   );

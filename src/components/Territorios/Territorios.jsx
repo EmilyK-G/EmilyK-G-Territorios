@@ -3,6 +3,7 @@ import "./Territorios.css";
 
 
 function Territorios(props) {
+    const setTerrSelected = props.setTerrSelected;
     //use a useRef(?) to store all the streets
     const terrObj = {
         T1:  ["Walton Ave", "Gilroy Ave", "Pembrooke St", "Cambria St", "Menard St", "Lyndy Pl", "Cuninham Ave", "Pem"],
@@ -102,7 +103,7 @@ function Territorios(props) {
     <form>
         <h1 className="territorio_title">Territorio #</h1>
         <select className="form-control" 
-        onChange={(e)=>callTerritorio(e.target.value)}>
+        onChange={(e)=>{callTerritorio(e.target.value); setTerrSelected(e.target.value)}}>
             <option>Select a number</option>
             <option>1</option>
             <option>2</option>
