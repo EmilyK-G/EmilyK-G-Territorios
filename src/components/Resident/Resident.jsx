@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { colRef } from '../../firebase';
 import { 
-    getDocs,
     addDoc
 } from "firebase/firestore";
 import ResidentDetails from '../ResidentDetails/ResidentDetails';
@@ -21,20 +20,17 @@ function Resident(props) {
         House: "",
         Territory: ""
     };
+    useEffect(() => {
+      const newResJson = JSON.parse(localStorage.getItem('newResArray'));
+      if (newResJson) {
+        setNewResArray(newResJson)
+      }
+    }, [])
     
     useEffect(()=>{
-         //get collection data
-         getDocs(colRef).then( (snapshot) => {
-         let addresses = []
-         snapshot.docs.forEach((doc)=> {
-             addresses.push({ ...doc.data(), id: doc.id })
-         })
-        //  console.log(addresses)
-         })
-         .catch(err => {
-            console.log(err.message)
-         })
-     }, [])
+        localStorage.setItem('newResArray', JSON.stringify(newResArray));
+     }, [newResArray])
+    
     
     function handleSubmitClick() {
       residents.Street = props.street; //from App.js
@@ -49,6 +45,7 @@ function Resident(props) {
       .catch(e => console.log(e.message));
       setAddHouseAlert(false);
       setHouse("")
+      alert('You added a new house!')
     }
 
     function handleEnterKey(e) {
