@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { colRef } from '../../firebase';
-import { 
-    addDoc
-} from "firebase/firestore";
+import { addDoc } from "firebase/firestore";
 import ResidentDetails from '../ResidentDetails/ResidentDetails';
 import PreviewBtn from '../PreviewBtn/PreviewBtn';
 import "./Resident.css";
