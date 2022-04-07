@@ -16,7 +16,6 @@ function TableCartas() {
             });
             setTerritorio(addresses);
             });
-            console.log("its running")
     }, [])
     
     function rowMaker(house, i) {
@@ -38,7 +37,7 @@ function TableCartas() {
                         <td>{res}</td>
                         <td> </td>
                     </tr>
-                }) : console.log(residentsName.length)}
+                }) : null}
             </>
         )
     }
