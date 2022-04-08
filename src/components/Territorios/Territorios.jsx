@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import "./Territorios.css";
 
 
 function Territorios(props) {
+    const terrSelected = props.terrSelected;
     const setTerrSelected = props.setTerrSelected;
     //use a useRef(?) to store all the streets
     const terrObj = {
@@ -130,14 +132,17 @@ function Territorios(props) {
             <option>23</option>
         </select>
         <button 
-            className="btn btn-primary" 
+            className="btn btn-primary mt-1" 
             type="button" 
             onClick={(e) => {
                 e.preventDefault();
-                props.setIsTerr(true)
+                terrSelected === "" ? alert("Select a Territory") : terrSelected ==="Select a number" ? alert("Select a Territory") : props.setIsTerr(true) 
             }}>
                     Start
         </button>
+        <div className="mt-4">
+            <Link to="/print" className={terrSelected === "" ? "link_hide" : terrSelected ==="Select a number" ? "link_hide" : ""}>View and Print</Link>
+        </div>
     </form>
   )
 }

@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { forwardRef, useEffect, useState } from 'react';
 import { collection, query, where, onSnapshot } from "firebase/firestore";
 import db  from '../../../firebase';
 import "./TableCartas.css";
 
-function TableCartas() {
+
+
+const TableCartas = forwardRef((props, cartasRef)=>{
     const [territorio, setTerritorio] = useState([])
     
 
@@ -42,25 +44,25 @@ function TableCartas() {
         )
     }
 
-  return (
-    <div>
-        <table className="table table-bordered">
-            <thead>
-                <tr>
-                    <th colSpan={3}>Territorio # 11 -Cartas</th>
-                </tr>
-                <tr>
-                    <th>Dirección</th>
-                    <th>Residente</th>
-                    <th>Fecha</th>
-                </tr>
-            </thead>
-            <tbody>
-                {territorio.map((house, i) => rowMaker(house, i))}
-            </tbody>
-        </table>
-    </div>
-  )
-}
+    return (
+        <div>
+            <table className="table table-bordered" ref={cartasRef}>
+                <thead>
+                    <tr>
+                        <th colSpan={3}>Territorio # 11 -Cartas</th>
+                    </tr>
+                    <tr>
+                        <th>Dirección</th>
+                        <th>Residente</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {territorio.map((house, i) => rowMaker(house, i))}
+                </tbody>
+            </table>
+        </div>
+      )
+})
 
 export default TableCartas

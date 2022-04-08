@@ -1,9 +1,9 @@
-import React, {useState, useEffect } from 'react';
+import React, {useState, useEffect, forwardRef } from 'react';
 import { collection, query, where, onSnapshot } from "firebase/firestore";
 import db  from '../../../firebase';
 
 
-function TableTelefono() {
+const TableTelefono = forwardRef((props, telefonosRef)=>{
     const [territorio, setTerritorio] = useState([])
     useEffect(() => {
         const q = query(collection(db, "Addresses"), where("Territory", "==", "2"));
@@ -49,7 +49,7 @@ function TableTelefono() {
     }
   return (
     <div>
-        <table className="table">
+        <table className="table" ref={telefonosRef}>
             <thead>
                 <tr>
                     <th colSpan={6}>Territorio # 11 -Teléfonos</th>
@@ -69,6 +69,6 @@ function TableTelefono() {
         </table>
     </div>
   )
-}
+})
 
 export default TableTelefono
