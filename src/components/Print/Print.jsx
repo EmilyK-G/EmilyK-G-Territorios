@@ -4,23 +4,31 @@ import "./Print.css";
 import TableCartas from './Tables/TableCartas';
 import TableTelefono from './Tables/TableTelefono';
 
-function Print() {
+function Print(props) {
   const cartasRef = useRef();
   const telefonosRef = useRef();
-
+  const terrSelected = props.terrSelected;
   return (
-    <div className="print_bgr">
-        <ReactToPrint
-          trigger={() => <button className="btn btn-outline-primary btn-sm">Print</button>}
-          content={() => cartasRef.current}
-        />
-        <TableCartas ref={cartasRef}/>
-        <ReactToPrint
-          trigger={() => <button className="btn btn-outline-primary btn-sm">Print</button>}
-          content={() => telefonosRef.current}
-        />
-        <TableTelefono ref={telefonosRef}/>
-    </div>
+    <>
+    {terrSelected === "" ? 
+      <div>
+        <h3> Please Select a Territory </h3>
+      </div> 
+      : 
+      <div className="print_bgr">
+          <ReactToPrint
+            trigger={() => <button className="btn btn-dark btn-sm">Print</button>}
+            content={() => cartasRef.current}
+          />
+          <TableCartas ref={cartasRef} terrSelected={terrSelected}/>
+          <ReactToPrint
+            trigger={() => <button className="btn btn-dark btn-sm">Print</button>}
+            content={() => telefonosRef.current}
+          />
+          <TableTelefono ref={telefonosRef} terrSelected={terrSelected}/>
+      </div>}
+    
+    </>
   ) 
 }
 

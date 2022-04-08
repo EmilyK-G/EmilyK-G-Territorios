@@ -1,15 +1,17 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection } from "firebase/firestore";
 
+
+console.log(process.env);
 const firebaseConfig = {
-  apiKey: "AIzaSyBbhu2asvVLOg4vU-bzZUiqVaCki6DPIJk",
-  authDomain: "territorios-abb75.firebaseapp.com",
-  projectId: "territorios-abb75",
-  storageBucket: "territorios-abb75.appspot.com",
-  messagingSenderId: "869597927154",
-  appId: "1:869597927154:web:40864f0362add08f5d626b",
-  measurementId: "G-SM7CPB0DK3"
-};
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID,
+    measurementId: process.env.REACT_APP_MEASUREMENT_ID
+  }
 
 //init firebase app
 initializeApp(firebaseConfig);
@@ -19,7 +21,7 @@ const db = getFirestore();
 
  // collection ref
 
- const colRef = collection(db, 'Addresses')
+const colRef = collection(db, 'Addresses')
 
 
 export { colRef };

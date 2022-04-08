@@ -20,7 +20,7 @@ function App() {
           <><Street setStreet={setStreet} street={street} isTerr={isTerr} territorio={territorio}/>
           <Resident street={street} terrSelected={terrSelected}/></> : 
           <Territorios setTerritorio={setTerritorio} setIsTerr={setIsTerr} setTerrSelected={setTerrSelected} terrSelected={terrSelected}/>} />
-          <Route path="print" element={<Print />} />
+          <Route path="print" element={<Print terrSelected={terrSelected} />} />
         </Routes>
       </header>
     </div>

@@ -7,10 +7,10 @@ import "./TableCartas.css";
 
 const TableCartas = forwardRef((props, cartasRef)=>{
     const [territorio, setTerritorio] = useState([])
-    
+    const terrSelected = props.terrSelected;
 
     useEffect(() => {
-        const q = query(collection(db, "Addresses"), where("Territory", "==", "2"));
+        const q = query(collection(db, "Addresses"), where("Territory", "==", `${terrSelected}`));
         onSnapshot(q, (querySnapshot) => {
             const addresses = [];
             querySnapshot.forEach((doc) => {
@@ -18,7 +18,7 @@ const TableCartas = forwardRef((props, cartasRef)=>{
             });
             setTerritorio(addresses);
             });
-    }, [])
+    }, [terrSelected])
     
     function rowMaker(house, i) {
         const residentsName = [];
@@ -49,7 +49,7 @@ const TableCartas = forwardRef((props, cartasRef)=>{
             <table className="table table-bordered" ref={cartasRef}>
                 <thead>
                     <tr>
-                        <th colSpan={3}>Territorio # 11 -Cartas</th>
+                        <th colSpan={3}>Territorio # {terrSelected} -Cartas</th>
                     </tr>
                     <tr>
                         <th>Dirección</th>

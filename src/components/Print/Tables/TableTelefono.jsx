@@ -5,8 +5,10 @@ import db  from '../../../firebase';
 
 const TableTelefono = forwardRef((props, telefonosRef)=>{
     const [territorio, setTerritorio] = useState([])
+    const terrSelected = props.terrSelected;
+
     useEffect(() => {
-        const q = query(collection(db, "Addresses"), where("Territory", "==", "2"));
+        const q = query(collection(db, "Addresses"), where("Territory", "==", `${terrSelected}`));
         onSnapshot(q, (querySnapshot) => {
             const people = [];
             querySnapshot.forEach((doc) => {
@@ -14,7 +16,7 @@ const TableTelefono = forwardRef((props, telefonosRef)=>{
             });
             setTerritorio(people);
             });
-    }, [])
+    }, [terrSelected])
     
     console.log(territorio);
 
@@ -27,6 +29,7 @@ const TableTelefono = forwardRef((props, telefonosRef)=>{
                     <tr key={i}>
                         <td rowSpan={per.Phone.length === 1 ? per.Phone.length : per.Phone.length + 1}>{per.Name}</td>
                         <td>{per.Phone[0] ? per.Phone[0] : ""}</td>
+                        <td> </td>
                         <td> </td>
                         <td> </td>
                         <td> </td>
@@ -49,10 +52,10 @@ const TableTelefono = forwardRef((props, telefonosRef)=>{
     }
   return (
     <div>
-        <table className="table" ref={telefonosRef}>
+        <table className="table table-bordered" ref={telefonosRef}>
             <thead>
                 <tr>
-                    <th colSpan={6}>Territorio # 11 -Teléfonos</th>
+                    <th colSpan={6}>Territorio # {terrSelected} -Teléfonos</th>
                 </tr>
                 <tr>
                     <th>Nombre</th>
