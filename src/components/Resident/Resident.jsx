@@ -105,6 +105,9 @@ function Resident(props) {
                 </button>
             </div>
         </form>
+        <div className="d-flex justify-content-start mt-5">
+          <button onClick={()=>props.setIsTerr(false)} className="btn btn-sm btn_back_link">Back to territorio</button>
+        </div>
       </>
   )
 }

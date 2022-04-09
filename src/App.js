@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={isTerr ? 
           <><Street setStreet={setStreet} street={street} isTerr={isTerr} territorio={territorio}/>
-          <Resident street={street} terrSelected={terrSelected}/></> : 
+          <Resident street={street} terrSelected={terrSelected} setIsTerr={setIsTerr}/></> : 
           <Territorios setTerritorio={setTerritorio} setIsTerr={setIsTerr} setTerrSelected={setTerrSelected} terrSelected={terrSelected}/>} />
           <Route path="print" element={<Print terrSelected={terrSelected} />} />
         </Routes>

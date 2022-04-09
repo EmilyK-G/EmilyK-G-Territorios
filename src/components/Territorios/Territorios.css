@@ -4,3 +4,7 @@
 .link_hide {
     display: none;
 }
+div > a {
+    color: #ff9b01;
+    text-decoration: none;
+}

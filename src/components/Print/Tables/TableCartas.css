@@ -1,4 +1,9 @@
 table.table {
     font-size: 0.5rem;
-    background-color: whitesmoke;
+    background-color: whitesmoke
 }
+@media print {
+    table.table {
+        background-color: #ffffff
+    }
+  }

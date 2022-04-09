@@ -25,17 +25,18 @@ const TableCartas = forwardRef((props, cartasRef)=>{
         house.Resident.map((res)=>(
             residentsName.push(res.Name)
         ))
+        const residentsShift = residentsName.shift();
         
         return (
             <>
             <tr key={i}>
                 <td rowSpan={residentsName.length === 1 ? residentsName.length : residentsName.length + 1}>{house.Street}</td>
-                <td>{residentsName[0] ? residentsName[0] : ""}</td>
+                <td>{residentsName[0] ? residentsShift : ""}</td>
                 <td> </td>
             </tr>
             {residentsName.length > 1 ? 
-                residentsName.map((res, i)=>{
-                    return <tr key={i}>
+                residentsName.map((res)=>{
+                    return <tr>
                         <td>{res}</td>
                         <td> </td>
                     </tr>
@@ -54,7 +55,7 @@ const TableCartas = forwardRef((props, cartasRef)=>{
                     <tr>
                         <th>Dirección</th>
                         <th>Residente</th>
-                        <th>Fecha</th>
+                        <th>Fecha de envío</th>
                     </tr>
                 </thead>
                 <tbody>
