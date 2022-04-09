@@ -5,3 +5,8 @@
 .btn_back_link {
     color: #ff9b01;
 }
+.btn_preview {
+    color: #01ffe6;
+    background-color: #0f323866;
+    border-color: #01f9fb;
+}

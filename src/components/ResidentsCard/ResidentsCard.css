@@ -13,3 +13,9 @@ div.class-body > .resident_card_address {
 .phone_card_p {
     font-size: 0.8rem;
 }
+div.card_bgr {
+    --bs-bg-opacity: 1;
+    color: #01ffe6;
+    background-color: #0f323866;
+    border-color: #01f9fb;
+}

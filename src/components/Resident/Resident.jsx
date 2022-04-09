@@ -12,6 +12,7 @@ function Resident(props) {
     const [addResident, setAddResident] = useState(false);
     const [phoneArray, setPhoneArray] = useState([]); //From Resident Details
     const [addHouseAlert, setAddHouseAlert] = useState(false);
+    const [isSpliced, setIsSpliced] = useState(false);
     const residents = {
         Street: "",
         Resident: [],
@@ -27,7 +28,7 @@ function Resident(props) {
     
     useEffect(()=>{
         localStorage.setItem('newResArray', JSON.stringify(newResArray));
-     }, [newResArray])
+     }, [newResArray, isSpliced])
     
     
     function handleSubmitClick() {
@@ -79,10 +80,10 @@ function Resident(props) {
                   </button>
               </div>}  
             </div>
-            {preview ? <PreviewBtn newResArray={newResArray} house={house} street={props.street} phoneArray={phoneArray}/> : "..." }
+            {preview ? <PreviewBtn newResArray={newResArray} house={house} street={props.street} phoneArray={phoneArray} setIsSpliced={setIsSpliced}/> : "..." }
             <div className="col-auto my-1">
               <button 
-                className={"btn" + (preview ? " btn-secondary" : " btn-info")} 
+                className={"btn" + (preview ? " btn-secondary" : " btn_preview")} 
                 type="button" 
                 onClick={(e) => {
                     e.preventDefault()

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './ResidentsCard.css';
 
 function ResidentsCard(props) {
-  const [isDeleted, setIsDeleted] = useState(false);
+  const[isDeleted, setIsDeleted] = useState(false);
   const name = () => {
     if (props.res.Name) {
       return props.res.Name;
@@ -21,7 +21,7 @@ function ResidentsCard(props) {
     }
   }
   return (
-    <div className="card text-white bg-info mb-3" key={props.index}>
+    <div className="card card_bgr mb-3" key={props.index}>
         <div className="card-header">{name()}</div>
             <div className="class-body">
 
@@ -31,7 +31,7 @@ function ResidentsCard(props) {
             <button 
                 type="button" 
                 className={"btn btn-danger" + (isDeleted ? " disabled" : "")} 
-                onClick={() => {setIsDeleted(true); props.newResArray.splice(props.index, 1)}}>
+                onClick={() => {setIsDeleted(true); props.newResArray.splice(props.index, 1); props.setIsSpliced(true)}}>
                     {(isDeleted ? "Deleted" : "Delete")}</button>
         </div>
     </div>
