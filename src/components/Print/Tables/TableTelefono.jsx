@@ -18,17 +18,17 @@ const TableTelefono = forwardRef((props, telefonosRef)=>{
             });
     }, [terrSelected])
     
-    console.log(territorio);
 
     function rowMaker(ppl, i) {
         return <>
         { ppl.length > 0 ?
             ppl.map((per)=>{
                 if(per.Phone.length > 0){
+                    const phoneShift = per.Phone.shift();
                     return <>
                     <tr key={i}>
                         <td rowSpan={per.Phone.length === 1 ? per.Phone.length : per.Phone.length + 1}>{per.Name}</td>
-                        <td>{per.Phone[0] ? per.Phone[0] : ""}</td>
+                        <td>{per.Phone[0] ? phoneShift : ""}</td>
                         <td> </td>
                         <td> </td>
                         <td> </td>
