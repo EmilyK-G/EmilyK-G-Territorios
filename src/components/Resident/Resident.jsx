@@ -13,6 +13,7 @@ function Resident(props) {
     const [phoneArray, setPhoneArray] = useState([]); //From Resident Details
     const [addHouseAlert, setAddHouseAlert] = useState(false);
     const [isSpliced, setIsSpliced] = useState(false);
+    const [toBeEdited, setToBeEdited] = useState({});
     const residents = {
         Street: "",
         Resident: [],
@@ -30,7 +31,7 @@ function Resident(props) {
         localStorage.setItem('newResArray', JSON.stringify(newResArray));
      }, [newResArray, isSpliced])
     
-    
+
     function handleSubmitClick() {
       residents.Street = props.street; //from App.js
       residents.House = document.querySelector('.add_house_js').value;
@@ -69,7 +70,7 @@ function Resident(props) {
                 required />
             </div>
             <div className="form-group">
-              {addResident ? <ResidentDetails setNewResArray={setNewResArray} setPhoneArray={setPhoneArray} phoneArray={phoneArray}/> : 
+              {addResident ? <ResidentDetails setNewResArray={setNewResArray} setPhoneArray={setPhoneArray} phoneArray={phoneArray} toBeEdited={toBeEdited}/> : 
                 <div className="form-group col-auto my-1">
                   {addHouseAlert ? <p className="add_house_alert">Add a House Number</p> : ""}
                   <button 
@@ -80,7 +81,7 @@ function Resident(props) {
                   </button>
               </div>}  
             </div>
-            {preview ? <PreviewBtn newResArray={newResArray} house={house} street={props.street} phoneArray={phoneArray} setIsSpliced={setIsSpliced}/> : "..." }
+            {preview ? <PreviewBtn newResArray={newResArray} house={house} street={props.street} setIsSpliced={setIsSpliced} setToBeEdited={setToBeEdited}/> : "..." }
             <div className="col-auto my-1">
               <button 
                 className={"btn" + (preview ? " btn-secondary" : " btn_preview")} 

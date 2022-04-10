@@ -1,19 +1,34 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './ResidentDetails.css';
 function ResidentDetails(props) {
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
   const [addResident, setAddResident] = useState(false);
   
-
+  //From Resident.jsx
+  const setPhoneArray = props.setPhoneArray;
+  const toBeEdited = props.toBeEdited;
+  
+  useEffect(() => {
+    if(toBeEdited.Name){
+      setName(toBeEdited.Name);
+      setPhoneArray(toBeEdited.Phone);
+      setAddResident(false)
+    } else {
+      console.log(toBeEdited);
+    }
+  }, [toBeEdited, setPhoneArray])
+  
+  
   function handleAddPhone() {
+    //From Resident.jsx
     props.setPhoneArray([...props.phoneArray, phone]);
     setPhone("");
   }
   
   
   function handleAddResidentClick() {
-    //sending Resident Array to resident state on parent component
+    //sending all Name and Phone Arrays to newResArray state on Resident.jsx
     props.setNewResArray(prev => ([...prev, { Name: name, Phone: props.phoneArray}])); 
     setName("");
     setPhone("");
@@ -37,6 +52,7 @@ function ResidentDetails(props) {
             name="ResidentName" 
             id="formResidentName" 
             value={name} 
+            //User's Name input displayed on ResidentsCard
             onChange={(e)=> setName(e.target.value)}
             placeholder="Ex. Juan Perez"
             autoFocus
@@ -53,6 +69,7 @@ function ResidentDetails(props) {
               value={phone}
               id="formPhoneNumber" 
               onKeyPress={(e)=> handleEnterKey(e)}
+              //User's Phone input to phone state --TO BE ENTERED (not dysplayed on ResidentsCard)
               onChange={(e)=> setPhone(e.target.value)}
               placeholder="Ex. 5161234567" 
               disabled={addResident}/>
@@ -61,6 +78,7 @@ function ResidentDetails(props) {
                   className="btn btn-secondary" 
                   type="button" 
                   id="button-addon2"
+                  //Entering phone to PhoneArray state on  Resident.jsx to be displayed on ResidentsCard
                   onClick={()=>{handleAddPhone()}}>+</button>
               </div>
           </div>
