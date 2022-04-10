@@ -1,9 +1,12 @@
 table.table {
     font-size: 0.5rem;
-    background-color: whitesmoke
+    background-color: #313233;
+    color: #00ffe7;
 }
 @media print {
     table.table {
-        background-color: #ffffff
+        font-size: 12pt;
+        background-color: #ffffff;
+        border-color: rgb(45, 45, 45);
     }
   }

@@ -75,11 +75,11 @@ function ResidentDetails(props) {
               disabled={addResident}/>
               <div className="input-group-append">
                 <button 
-                  className="btn btn-secondary" 
+                  className="btn btn-primary" 
                   type="button" 
                   id="button-addon2"
                   //Entering phone to PhoneArray state on  Resident.jsx to be displayed on ResidentsCard
-                  onClick={()=>{handleAddPhone()}}>+</button>
+                  onClick={()=>{handleAddPhone()}}>Save</button>
               </div>
           </div>
         </div>
@@ -87,7 +87,7 @@ function ResidentDetails(props) {
           <div className="alert alert-success">You added a resident!</div> :
             <div className="col-auto my-1">
               <button 
-                className="btn btn-primary" 
+                className="btn btn-outline-light" 
                 type="button" onClick={(e) => {
                     e.preventDefault()
                     handleAddResidentClick()

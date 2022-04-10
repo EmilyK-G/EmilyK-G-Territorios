@@ -140,7 +140,7 @@ function Territorios(props) {
             }}>
                     Start
         </button>
-        <div className="mt-4">
+        <div className="mt-5 view_link_outline">
             <Link to="/print" className={terrSelected === "" ? "link_hide" : terrSelected ==="Select a number" ? "link_hide" : ""}>View and Print</Link>
         </div>
     </form>

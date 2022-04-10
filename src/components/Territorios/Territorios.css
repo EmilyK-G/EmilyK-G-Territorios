@@ -5,6 +5,14 @@
     display: none;
 }
 div > a {
-    color: #ff9b01;
+    color: white;
     text-decoration: none;
+}
+.view_link_outline {
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    background-color: #000000
+}
+.view_link_outline:hover {
+    background-color: #0000005a
 }

@@ -11,6 +11,7 @@ div.form-group > div.input-group.mb-3 {
 }
 .resident_details_body {
     background-color: #f0f8ff1a;
+    border-radius: 20px;
 }
 div.resident_details_bgr > div.alert {
     padding: 0.7rem 0.7rem;

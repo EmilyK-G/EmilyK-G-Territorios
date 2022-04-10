@@ -17,12 +17,12 @@ function Print(props) {
       : 
       <div className="print_bgr d-flex flex-column">
           <ReactToPrint
-            trigger={() => <button className="btn btn-dark btn-sm justify-content-end">Print</button>}
+            trigger={() => <button className="btn btn-secondary btn-sm justify-content-end">Print</button>}
             content={() => cartasRef.current}
           />
           <TableCartas ref={cartasRef} terrSelected={terrSelected}/>
           <ReactToPrint
-            trigger={() => <button className="btn btn-dark btn-sm justify-content-end">Print</button>}
+            trigger={() => <button className="btn btn-secondary btn-sm justify-content-end">Print</button>}
             content={() => telefonosRef.current}
           />
           <TableTelefono ref={telefonosRef} terrSelected={terrSelected}/>
