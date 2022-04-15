@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import PhoneList from './PhoneList.jsx';
 import './ResidentDetails.css';
 function ResidentDetails(props) {
   const [phone, setPhone] = useState("");
@@ -29,7 +30,8 @@ function ResidentDetails(props) {
   
   function handleAddResidentClick() {
     //sending all Name and Phone Arrays to newResArray state on Resident.jsx
-    props.setNewResArray(prev => ([...prev, { Name: name, Phone: props.phoneArray}])); 
+    const filteredArray = props.phoneArray.filter(pho => pho !== "")
+    props.setNewResArray(prev => ([...prev, { Name: name, Phone: filteredArray}])); 
     setName("");
     setPhone("");
     props.setPhoneArray([]);
@@ -40,6 +42,7 @@ function ResidentDetails(props) {
       e.preventDefault();
     }
   }
+
 
   return (
       <div className="resident_details_bgr mt-4 p-1">
@@ -60,7 +63,15 @@ function ResidentDetails(props) {
             onFocus={()=> setAddResident(false)}/>
 
           <label htmlFor="formPhoneNumber" className="phone_number_label">Phone Number</label>
-          <ul className="list-group">{props.phoneArray.map((phos, i)=>{return <li className={"list-group-item"} key={i}>{phos}</li>})}</ul>{/*shows to user the phones added for the specific resident*/}
+
+          {/*The following list shows to user the phones added for the specific resident*/}
+          {props.phoneArray.length > 0 && 
+            <ul className="list-group">
+              {props.phoneArray.map((pho, i)=>{
+                  return <PhoneList pho={pho} idx={i} phoneArray={props.phoneArray} setPhoneArray={props.setPhoneArray}/>
+                })}
+            </ul>}
+
           <div className="input-group mb-3">
             <input 
               type="text" 
@@ -70,7 +81,7 @@ function ResidentDetails(props) {
               id="formPhoneNumber" 
               onKeyPress={(e)=> handleEnterKey(e)}
               //User's Phone input to phone state --TO BE ENTERED (not dysplayed on ResidentsCard)
-              onChange={(e)=> setPhone(e.target.value)}
+              onChange={(e)=> {e.preventDefault(); setPhone(e.target.value)}}
               placeholder="Ex. 5161234567" 
               disabled={addResident}/>
               <div className="input-group-append">

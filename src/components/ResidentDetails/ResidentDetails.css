@@ -25,3 +25,16 @@ div.form-group > ul > li {
     color: inherit;
     text-align: left;
 }
+ul > li > span.active_badge{
+    border-radius: 10px;
+    background-color: rgb(222, 0, 0);
+    cursor: pointer;
+}
+
+ul > li > span.deleted_badge{
+    border-radius: 5px;
+    background-color: grey;
+    cursor: default;
+    font-size: xx-small;
+    font-style: italic;
+}

@@ -14,6 +14,7 @@ function Resident(props) {
     const [addHouseAlert, setAddHouseAlert] = useState(false);
     const [isSpliced, setIsSpliced] = useState(false);
     const [toBeEdited, setToBeEdited] = useState({});
+    const [keyPressed, setKeyPressed] = useState(false);
     const residents = {
         Street: "",
         Resident: [],
@@ -54,10 +55,20 @@ function Resident(props) {
       }
     }
 
+    function handleKeyDown(e){
+      if (e.key === "Delete" || e.key === "Backspace") {
+        if (!keyPressed) { 
+          e.preventDefault();
+          alert("* Remember to save your current house before starting a new one *");
+          setKeyPressed(true);
+        }
+      }
+    }
+
   return (
       <>
         <form className="resident_form_js">
-            <div className="form-group">
+            <div className="form-group popover-dismiss">
               <label htmlFor="formHouseNumber">House Number</label>
               <input 
                 type="text" 
@@ -67,6 +78,7 @@ function Resident(props) {
                 id="formHouseNumber" 
                 placeholder="Ex. 144"
                 onKeyPress={(e)=>handleEnterKey(e)}
+                onKeyDown={(e)=>handleKeyDown(e)}
                 required />
             </div>
             <div className="form-group">

@@ -30,7 +30,7 @@ const TableCartas = forwardRef((props, cartasRef)=>{
         return (
             <>
             <tr key={i}>
-                <td rowSpan={residentsName.length === 1 ? residentsName.length : residentsName.length + 1}>{house.Street}</td>
+                <td rowSpan={residentsName.length === 1 ? residentsName.length : residentsName.length + 1}>{house.House} {house.Street}</td>
                 <td>{residentsName[0] ? residentsShift : ""}</td>
                 <td> </td>
             </tr>

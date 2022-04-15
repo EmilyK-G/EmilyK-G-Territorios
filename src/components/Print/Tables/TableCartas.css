@@ -5,8 +5,9 @@ table.table {
 }
 @media print {
     table.table {
-        font-size: 12pt;
+        font-size: 10pt;
         background-color: #ffffff;
         border-color: rgb(45, 45, 45);
+        color: rgb(45, 45, 45)
     }
   }
