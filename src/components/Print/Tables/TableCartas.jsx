@@ -33,11 +33,15 @@ const TableCartas = forwardRef((props, cartasRef)=>{
                 <td rowSpan={residentsName.length === 1 ? residentsName.length : residentsName.length + 1}>{house.House} {house.Street}</td>
                 <td>{residentsName[0] ? residentsShift : ""}</td>
                 <td> </td>
+                <td> </td>
+                <td> </td>
             </tr>
             {residentsName.length > 1 ? 
                 residentsName.map((res)=>{
                     return <tr>
                         <td>{res}</td>
+                        <td> </td>
+                        <td> </td>
                         <td> </td>
                     </tr>
                 }) : null}
@@ -50,12 +54,14 @@ const TableCartas = forwardRef((props, cartasRef)=>{
             <table className="table table-bordered" ref={cartasRef}>
                 <thead>
                     <tr>
-                        <th colSpan={3}>Territorio # {terrSelected} -Cartas</th>
+                        <th colSpan={5}>Territorio # {terrSelected} -Cartas</th>
                     </tr>
                     <tr>
                         <th>Dirección</th>
                         <th>Residente</th>
-                        <th>Fecha de envío</th>
+                        <th>1ra Carta</th>
+                        <th>2ra Carta</th>
+                        <th>3ra Carta</th>
                     </tr>
                 </thead>
                 <tbody>

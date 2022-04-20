@@ -4,6 +4,7 @@ import './ResidentDetails.css';
 function ResidentDetails(props) {
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
+  const [isInvalid, setIsInvalid] = useState(false);
   const [addResident, setAddResident] = useState(false);
   
   //From Resident.jsx
@@ -22,9 +23,14 @@ function ResidentDetails(props) {
   
   
   function handleAddPhone() {
-    //From Resident.jsx
-    props.setPhoneArray([...props.phoneArray, phone]);
-    setPhone("");
+    if(phone.length < 10) {
+      setIsInvalid(true)
+    } else {
+      setIsInvalid(false);
+      //From Resident.jsx
+      props.setPhoneArray([...props.phoneArray, phone]);
+      setPhone("");
+    }
   }
   
   
@@ -47,7 +53,7 @@ function ResidentDetails(props) {
   return (
       <div className="resident_details_bgr mt-4 p-1">
         
-        <div className="form-group resident_details_body">
+        <div className="form-group resident_details_body mb-3">
           <label htmlFor="formResidentName">Resident Name</label>
           <input 
             type="text" 
@@ -72,7 +78,7 @@ function ResidentDetails(props) {
                 })}
             </ul>}
 
-          <div className="input-group mb-3">
+          <div className={"input-group " + (!isInvalid ? "mb-3" : "")}>
             <input 
               type="text" 
               className="form-control add_phone_js" 
@@ -93,6 +99,7 @@ function ResidentDetails(props) {
                   onClick={()=>{handleAddPhone()}}>Save</button>
               </div>
           </div>
+              {isInvalid ? <span className="invalid_text">Please enter a valid number</span> : null}
         </div>
         {addResident ? 
           <div className="alert alert-success">You added a resident!</div> :
