@@ -82,7 +82,7 @@ function Resident(props) {
                 required />
             </div>
             <div className="form-group">
-              {addResident ? <ResidentDetails setNewResArray={setNewResArray} setPhoneArray={setPhoneArray} phoneArray={phoneArray} toBeEdited={toBeEdited}/> : 
+              {addResident ? <ResidentDetails setNewResArray={setNewResArray} setPhoneArray={setPhoneArray} phoneArray={phoneArray} toBeEdited={toBeEdited} /> : 
                 <div className="form-group col-auto my-1">
                   {addHouseAlert ? <p className="add_house_alert">Add a House Number</p> : ""}
                   <button 
@@ -93,7 +93,7 @@ function Resident(props) {
                   </button>
               </div>}  
             </div>
-            {preview ? <PreviewBtn newResArray={newResArray} house={house} street={props.street} setIsSpliced={setIsSpliced} setToBeEdited={setToBeEdited}/> : "..." }
+            {preview ? <PreviewBtn newResArray={newResArray} house={house} street={props.street} setIsSpliced={setIsSpliced} setToBeEdited={setToBeEdited} setAddResident={setAddResident} /> : "..." }
             <div className="col-auto my-1">
               <button 
                 className={"btn" + (preview ? " btn-secondary" : " btn_preview")} 

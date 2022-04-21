@@ -3,7 +3,8 @@ import './ResidentsCard.css';
 
 function ResidentsCard(props) {
   const[isDeleted, setIsDeleted] = useState(false);
-  const[editing, setEditing] = useState(false);
+  const setAddResident = props.setAddResident;
+
   const name = () => {
     if (props.res.Name) {
       return props.res.Name;
@@ -24,7 +25,7 @@ function ResidentsCard(props) {
 
   function handleEditClick() {
     props.newResArray.splice(props.index, 1);
-    setEditing(true)
+    setAddResident(true)
   }
   return (
     <div className="card card_bgr mb-3" key={props.index}>

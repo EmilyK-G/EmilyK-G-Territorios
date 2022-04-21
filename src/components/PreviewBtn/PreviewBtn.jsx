@@ -15,7 +15,8 @@ function PreviewBtn(props) {
             index={i} 
             newResArray={props.newResArray} 
             setIsSpliced={props.setIsSpliced} 
-            setToBeEdited={props.setToBeEdited}/>
+            setToBeEdited={props.setToBeEdited}
+            setAddResident={props.setAddResident}/>
         ))}
     </div>
   )

@@ -80,10 +80,11 @@ function ResidentDetails(props) {
 
           <div className={"input-group " + (!isInvalid ? "mb-3" : "")}>
             <input 
-              type="text" 
+              type="tel" 
               className="form-control add_phone_js" 
               name="PhoneNumber" 
               value={phone}
+              minLength="10" 
               id="formPhoneNumber" 
               onKeyPress={(e)=> handleEnterKey(e)}
               //User's Phone input to phone state --TO BE ENTERED (not dysplayed on ResidentsCard)
