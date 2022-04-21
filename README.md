@@ -1,6 +1,6 @@
 ## User Stories:
 
-♦As a customer service worker, I want an easy and safe way to store costumer's information so I don't lose it or misplace it.
+♦As a customer service worker, I want an easy and safe way to store costumer's information so I don't lose it or misplace it. \
 ♦As a customer service worker, I want an easy way to organize customer's information so I can get only the information I need when I need it.
 
 ## Getting Started with Create React App
