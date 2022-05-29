@@ -3,6 +3,7 @@ import ReactToPrint from 'react-to-print';
 import "./Print.css";
 import TableCartas from './Tables/TableCartas';
 import TableTelefono from './Tables/TableTelefono';
+import TableTelefonoTest from './Tables/TableTelefonoTest';
 
 function Print(props) {
   const cartasRef = useRef();
@@ -25,7 +26,7 @@ function Print(props) {
             trigger={() => <button className="btn btn-success btn-sm justify-content-end">Print</button>}
             content={() => telefonosRef.current}
           />
-          <TableTelefono ref={telefonosRef} terrSelected={terrSelected}/>
+          <TableTelefonoTest ref={telefonosRef} terrSelected={terrSelected}/>
       </div>}
     
     </>

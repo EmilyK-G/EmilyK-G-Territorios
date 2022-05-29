@@ -55,9 +55,10 @@ const TableTelefono = forwardRef((props, telefonosRef)=>{
         <table className="table table-bordered" ref={telefonosRef}>
             <thead>
                 <tr>
-                    <th colSpan={6}>Territorio # {terrSelected} -Teléfonos</th>
+                    <th colSpan={7}>Territorio # {terrSelected} -Teléfonos</th>
                 </tr>
                 <tr>
+                    <th>Dirección</th>
                     <th>Nombre</th>
                     <th>Teléfono</th>
                     <th>1ra Llamada</th>
