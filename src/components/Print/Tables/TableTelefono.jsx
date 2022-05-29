@@ -1,6 +1,7 @@
-import React, {useState, useEffect, forwardRef } from 'react';
+import React, { forwardRef, useEffect, useState } from 'react';
 import { collection, query, where, onSnapshot } from "firebase/firestore";
 import db  from '../../../firebase';
+import "./TableCartas.css";
 
 
 const TableTelefono = forwardRef((props, telefonosRef)=>{
@@ -10,69 +11,76 @@ const TableTelefono = forwardRef((props, telefonosRef)=>{
     useEffect(() => {
         const q = query(collection(db, "Addresses"), where("Territory", "==", `${terrSelected}`));
         onSnapshot(q, (querySnapshot) => {
-            const people = [];
+            const addresses = [];
             querySnapshot.forEach((doc) => {
-                people.push(doc.data().Resident);
+                addresses.push(doc.data());
             });
-            setTerritorio(people);
+            setTerritorio(addresses);
             });
     }, [terrSelected])
     
-
-    function rowMaker(ppl, i) {
-        return <>
-        { ppl.length > 0 ?
-            ppl.map((per)=>{
-                if(per.Phone.length > 0){
-                    const phoneShift = per.Phone.shift();
-                    return <>
-                    <tr key={i}>
-                        <td rowSpan={per.Phone.length === 1 ? per.Phone.length : per.Phone.length + 1}>{per.Name}</td>
-                        <td>{per.Phone[0] ? phoneShift : ""}</td>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
-                    </tr>
-                    {per.Phone.length > 1 ? 
-                        per.Phone.map((phn, ii)=>{
-                            return <tr key={ii}>
-                                <td>{phn}</td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
+    function rowMaker(house, i) {
+        const people = house.Resident;
+        return (
+            <>
+            <tr key={i}><td colSpan={6} className="street_print">{house.House} {house.Street}</td></tr>
+            { people.length > 0 ? 
+                people.map((per, ii)=>{
+                    console.log(per);
+                    if(per.Phone.length > 0){
+                       
+                        return <>
+                            <tr key={ii}> 
+                                <td rowSpan={per.Phone.length === 1 ? per.Phone.length : per.Phone.length + 1}>{per.Name}</td>
+                                {per.Phone.length === 1 ? 
+                                    <>
+                                    <td>{per.Phone[0]}</td>
+                                    <td> </td>
+                                    <td> </td>
+                                    <td> </td>
+                                    <td> </td></> : null}
                             </tr>
-                        }) : console.log(per.Phone.length)}
-                    </>
-                } else {return null}
-            }) : null
-        }
-        </>
+                            {per.Phone.length > 1 ? 
+                                per.Phone.map((phn, iii)=>{
+                                    return <tr key={iii}>
+                                        <td>{phn}</td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                    </tr>
+                            }) : null}
+                        </>
+                    } else {return null}
+                
+                }) : null
+            }
+            </>
+        )
     }
-  return (
-    <div>
-        <table className="table table-bordered" ref={telefonosRef}>
-            <thead>
-                <tr>
-                    <th colSpan={7}>Territorio # {terrSelected} -Teléfonos</th>
-                </tr>
-                <tr>
-                    <th>Dirección</th>
-                    <th>Nombre</th>
-                    <th>Teléfono</th>
-                    <th>1ra Llamada</th>
-                    <th>2da Llamada</th>
-                    <th>3ra Llamada</th>
-                    <th>4ta Llamada</th>
-                </tr>
-            </thead>
-            <tbody>
-                {territorio.length > 0 && (territorio.map((ppl, i) => rowMaker(ppl, i)))}
-            </tbody>
-        </table>
-    </div>
-  )
+
+    return (
+        <div>
+            <table className="table table-bordered" ref={telefonosRef}>
+                <thead>
+                    <tr>
+                        <th colSpan={6}>Territorio # {terrSelected} -Teléfono</th>
+                    </tr>
+                    <tr>
+                        <th>Residente</th>
+                        <th>Número</th>
+                        <th>1ra Llamada</th>
+                        <th>2ra Llamada</th>
+                        <th>3ra Llamada</th>
+                        <th>4ra Llamada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {territorio.map((house, i) => rowMaker(house, i))}
+                </tbody>
+            </table>
+        </div>
+      )
 })
 
 export default TableTelefono
