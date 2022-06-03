@@ -13,7 +13,7 @@ function Resident(props) {
     const [phoneArray, setPhoneArray] = useState([]); //From Resident Details
     const [addHouseAlert, setAddHouseAlert] = useState(false);
     const [isSpliced, setIsSpliced] = useState(false);
-    const [toBeEdited, setToBeEdited] = useState({});
+    const [toBeEdited, setToBeEdited] = useState({}); //Name and Phone of the person beign edited. From ResidentsCard to ResidentDetails.
     const [keyPressed, setKeyPressed] = useState(false);
     const residents = {
         Street: "",
@@ -82,7 +82,7 @@ function Resident(props) {
                 required />
             </div>
             <div className="form-group">
-              {addResident ? <ResidentDetails setNewResArray={setNewResArray} setPhoneArray={setPhoneArray} phoneArray={phoneArray} toBeEdited={toBeEdited} /> : 
+              {addResident ? <ResidentDetails setNewResArray={setNewResArray} setPhoneArray={setPhoneArray} phoneArray={phoneArray} toBeEdited={toBeEdited} setToBeEdited={setToBeEdited} /> : 
                 <div className="form-group col-auto my-1">
                   {addHouseAlert ? <p className="add_house_alert">Add a House Number</p> : ""}
                   <button 

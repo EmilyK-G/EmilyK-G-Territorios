@@ -17,7 +17,7 @@ function ResidentDetails(props) {
       setPhoneArray(toBeEdited.Phone);
       setAddResident(false)
     } else {
-      console.log(toBeEdited);
+       return null//Try converting this to console.log(toBeEdited);
     }
   }, [toBeEdited, setPhoneArray])
   
@@ -111,6 +111,7 @@ function ResidentDetails(props) {
                     e.preventDefault()
                     handleAddResidentClick()
                     setAddResident(true)
+                    props.setToBeEdited({})
                 }}>
                     Add Resident
               </button>
