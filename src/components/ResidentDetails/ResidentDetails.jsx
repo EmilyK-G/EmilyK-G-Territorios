@@ -17,7 +17,7 @@ function ResidentDetails(props) {
       setPhoneArray(toBeEdited.Phone);
       setAddResident(false)
     } else {
-       return null//Try converting this to console.log(toBeEdited);
+       return null
     }
   }, [toBeEdited, setPhoneArray])
   

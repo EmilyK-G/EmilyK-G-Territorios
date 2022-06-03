@@ -14,7 +14,7 @@ function PhoneList(props) {
           <span className={"badge" + (phoneDeleted ? " deleted_badge" : " active_badge")} 
                 onClick={()=>{ 
                     setPhoneDeleted(true)
-                    handlePhoneDelete(props.idx);
+                    handlePhoneDelete();
                     }}
                 >{phoneDeleted ? "Deleted" : "-"}</span>
         </li>
