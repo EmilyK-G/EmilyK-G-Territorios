@@ -105,7 +105,7 @@ function Resident(props) {
                     {(preview ? "Close preview" : "Preview")}
                 </button>
             </div>
-            <div className="col-auto my-1">
+            {newResArray.length > 0 && <div className="col-auto my-1">
               <button 
                 className="btn btn-success" 
                 type="submit" 
@@ -115,9 +115,9 @@ function Resident(props) {
                     setAddResident(false)
                     setPreview(false)
                 }}>
-                    Submit form
+                    Submit {newResArray.length} resident{newResArray.length === 1 ? "" : "s"} to House #{house}
                 </button>
-            </div>
+            </div>}
         </form>
         <div className="d-flex justify-content-start mt-5">
           <button onClick={()=>props.setIsTerr(false)} className="btn btn-sm btn_back_link">Back to territorio</button>
