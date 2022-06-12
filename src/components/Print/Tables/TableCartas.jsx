@@ -1,24 +1,9 @@
-import React, { forwardRef, useEffect, useState } from 'react';
-import { collection, query, where, onSnapshot } from "firebase/firestore";
-import db  from '../../../firebase';
+import React, { forwardRef } from 'react';
 import "./TableCartas.css";
 
 
-
 const TableCartas = forwardRef((props, cartasRef)=>{
-    const [territorio, setTerritorio] = useState([])
-    const terrSelected = props.terrSelected;
-
-    useEffect(() => {
-        const q = query(collection(db, "Addresses"), where("Territory", "==", `${terrSelected}`));
-        onSnapshot(q, (querySnapshot) => {
-            const addresses = [];
-            querySnapshot.forEach((doc) => {
-                addresses.push(doc.data());
-            });
-            setTerritorio(addresses);
-            });
-    }, [terrSelected])
+    
     
     function rowMaker(house, i) {
         const residentsName = [];
@@ -56,7 +41,7 @@ const TableCartas = forwardRef((props, cartasRef)=>{
             <table className="table table-bordered" ref={cartasRef}>
                 <thead>
                     <tr>
-                        <th colSpan={6}>Territorio # {terrSelected} -Cartas</th>
+                        <th colSpan={6}>Territorio # {props.terrSelected} -Cartas</th>
                     </tr>
                     <tr>
                         <th>Dirección</th>
@@ -68,7 +53,7 @@ const TableCartas = forwardRef((props, cartasRef)=>{
                     </tr>
                 </thead>
                 <tbody>
-                    {territorio.map((house, i) => rowMaker(house, i))}
+                    {props.territorio.map((house, i) => rowMaker(house, i))}
                 </tbody>
             </table>
         </div>

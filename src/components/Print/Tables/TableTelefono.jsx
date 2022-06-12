@@ -1,23 +1,9 @@
-import React, { forwardRef, useEffect, useState } from 'react';
-import { collection, query, where, onSnapshot } from "firebase/firestore";
-import db  from '../../../firebase';
+import React, { forwardRef } from 'react';
 import "./TableCartas.css";
 
 
 const TableTelefono = forwardRef((props, telefonosRef)=>{
-    const [territorio, setTerritorio] = useState([])
-    const terrSelected = props.terrSelected;
-
-    useEffect(() => {
-        const q = query(collection(db, "Addresses"), where("Territory", "==", `${terrSelected}`));
-        onSnapshot(q, (querySnapshot) => {
-            const addresses = [];
-            querySnapshot.forEach((doc) => {
-                addresses.push(doc.data());
-            });
-            setTerritorio(addresses);
-            });
-    }, [terrSelected])
+    
     
     function rowMaker(house, i) {
         const people = house.Resident;
@@ -26,7 +12,6 @@ const TableTelefono = forwardRef((props, telefonosRef)=>{
             <tr key={i}><td colSpan={6} className="street_print">{house.House} {house.Street}</td></tr>
             { people.length > 0 ? 
                 people.map((per, ii)=>{
-                    console.log(per);
                     if(per.Phone.length > 0){
                        
                         return <>
@@ -64,7 +49,7 @@ const TableTelefono = forwardRef((props, telefonosRef)=>{
             <table className="table table-bordered" ref={telefonosRef}>
                 <thead>
                     <tr>
-                        <th colSpan={6}>Territorio # {terrSelected} -Teléfono</th>
+                        <th colSpan={6}>Territorio # {props.terrSelected} -Teléfono</th>
                     </tr>
                     <tr>
                         <th>Residente</th>
@@ -76,7 +61,7 @@ const TableTelefono = forwardRef((props, telefonosRef)=>{
                     </tr>
                 </thead>
                 <tbody>
-                    {territorio.map((house, i) => rowMaker(house, i))}
+                    {props.territorio.map((house, i) => rowMaker(house, i))}
                 </tbody>
             </table>
         </div>
