@@ -34,19 +34,23 @@ function Resident(props) {
     
 
     function handleSubmitClick() {
-      residents.Street = props.street; //from App.js
-      residents.House = document.querySelector('.add_house_js').value;
-      residents.Resident = newResArray;
-      residents.Territory = props.terrSelected;
-      addDoc(colRef, residents)
-      .then(() => {
-        document.querySelector('.resident_form_js').reset();
-        setNewResArray([]);
-      })
-      .catch(e => console.log(e.message));
-      setAddHouseAlert(false);
-      setHouse("")
-      alert('You added a new house!')
+      if(props.strName === ""){
+        alert("Oops, your address is missing!")
+      } else {
+          residents.Street = props.street; //from App.js
+          residents.House = document.querySelector('.add_house_js').value;
+          residents.Resident = newResArray;
+          residents.Territory = props.terrSelected;
+          addDoc(colRef, residents)
+          .then(() => {
+            document.querySelector('.resident_form_js').reset();
+            setNewResArray([]);
+          })
+          .catch(e => console.log(e.message));
+          setAddHouseAlert(false);
+          setHouse("")
+          alert('You added a new house!')
+          }
     }
 
     function handleEnterKey(e) {

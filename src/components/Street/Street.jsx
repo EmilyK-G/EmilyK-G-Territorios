@@ -2,24 +2,24 @@ import React, {useState, useEffect, useMemo} from 'react';
 import "./Street.css";
 
 function Street(props) {
-    const [strNumber, setStrNumber] = useState("")
     const [city, setCity] = useState("");
 
+    const strName = props.strName;
     const setStreet = props.setStreet;
     const cities = useMemo(()=>{
         return ["Uniondale, NY 11553", "Hempstead, NY 11550", "East Meadow, NY 11554", "Merrick, NY 11566", "Bellmore, NY 11710"]; 
     }, [])
     
     useEffect(()=>{
-        setStreet(`${strNumber}. ${cities[city]}`)
-    },[strNumber, city, cities, setStreet])
+        setStreet(`${strName}. ${cities[city]}`)
+    },[strName, city, cities, setStreet])
   return (
     <>
         <form>
             <div className="form-row align-items-center">
                 <div className="col-auto my-1">
                 <label htmlFor="street" className="mr-sm-2">Street</label>
-                <select className="form-control select_street_js" onChange={e => setStrNumber(e.target.value)}>
+                <select className="form-control select_street_js" onChange={e => props.setStrName(e.target.value)}>
                     <option value="Select street" defaultValue >Select Street</option>
                     {props.territorio.map((str, i) => {
                         return <option value={str} key={i}>{str}</option>
