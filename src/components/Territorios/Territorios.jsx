@@ -71,7 +71,7 @@ function Territorios(props) {
         props.setTerritorio(terrObj.T13)
     }
     if(terr === "14"){
-        props.setTerritorio(terrObj.T14)
+        props.setTerritorio(terrObj.T14);
     }
     if(terr === "15"){
         props.setTerritorio(terrObj.T15)

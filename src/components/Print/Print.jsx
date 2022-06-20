@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { query, where, onSnapshot } from "firebase/firestore";
 import { colRef } from '../../firebase';
-//import { doc, setDoc } from "firebase/firestore"
 import ReactToPrint from 'react-to-print';
 import "./Print.css";
 import TableCartas from './Tables/TableCartas';
@@ -25,18 +24,6 @@ function Print(props) {
           });
   }, [terrSelected])
 
-  function mergeDuplicates() {
-    const duplicates = [];
-    const map = new Map();
-    for(let i=0; i<territorio.length; i++){
-      const fullAddress = `${territorio[i].House} ${territorio[i].Street}`;
-      if(map.has(fullAddress)){
-        duplicates.push(fullAddress)
-      }
-      map.set(fullAddress, i)
-    }
-    console.log(duplicates)
-  }
 
   return (
     <>
@@ -48,7 +35,6 @@ function Print(props) {
       <div className="print_bgr d-flex flex-column">
         
           <div className="ml-auto pb-2 d-flex justify-content-end">
-            <button className="btn btn-small small btn-secondary" onClick={()=>mergeDuplicates()}>Merge duplicates</button>
           </div>
           <ReactToPrint
             trigger={() => <button className="btn btn-success btn-sm justify-content-end">Print</button>}
