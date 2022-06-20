@@ -20,7 +20,7 @@ function Territorios(props) {
         T10: ["Goodrich St", "Lafayette Ave", "Hmepstead Blvd", "Beck St", "Armond St", "Front St", "Newport Rd", "Terrel Pl", "Waverly PL", "Maple Ave", "Greengrove Ave", "Midwood St", "Webster Ave"],
         T11: ["Bedford Ave", "Cedar St", "Mize Ct", "Marshall Ct", "Cooper Ct", "Uniondale Ave", "Hempstead Blvd", "Maple Ave", "Durya Ave", "Fenimore Ave", "Greengrove Ave"],
         T12: ["Front St", "Fenimore Ave", "Midwood Ave", "Webster Ave", "Lenox Ave", "California Ave", "Bedford Ave", "Hawthorne Ave", "Clarendon Rd", "Cedar St", "Midwood St", "Webster Ave"],
-        T13: ["Oak St", "Longman Pl", "Warren St", "Lawrence St", "Rhodes Ave", "Gertrude St", "Thomas St", "Shady St", "Westbury Blvd", "Hempstead Tpk", "Firview Blvd", "Surrey Ln", "Tower Ct", "Brickston Ct", "Witley Ct", "Ravere Ct", "Turnwood Ct", "Fulton Ave"],
+        T13: ["Oak St", "Longman Pl", "Warren St", "Lawrence St", "Rhodes Ave", "Gertrude St", "Thomas St", "Shady St", "Westbury Blvd", "Hempstead Tpk", "Fairview Blvd", "Surrey Ln", "Tower Ct", "Brickston Ct", "Witley Ct", "Ravere Ct", "Turnwood Ct", "Fulton Ave"],
         T14: ["Front St", "Cameron Ave", "Cornwall Ln", "Truro Ln", "Devon Rd", "Hendrickson Ave", "Elizabeth Ct", "Fulton Ave"],
         T15: ["Manor Ave", "Manor Ct", "Greenlawn Ct", "Mitchell Ct", "Lexington Cir", "Harriet Ave", "Myrtle Ave", "Westbury Blvd", "Fulton Ave", "Saratoga Cir", "Harvard St", "Meadowbrook Rd", "Kernochan Ave", "Courtenay Rd"],
         T16: ["Hamilton Rd", "Jane St", "Hope St", "Roger St", "Butler Pl", "Broadfield Rd", "Duncan Rd", "Primrose Ln", "Cherry Ln", "Rutland Rd", "Brower Ln", "Valentine Pl", "Beverly Rd", "Webster Ave", "Perry St"],
