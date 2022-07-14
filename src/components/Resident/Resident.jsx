@@ -15,7 +15,9 @@ function Resident(props) {
     const [toBeEdited, setToBeEdited] = useState({}); //Name and Phone of the person beign edited. From ResidentsCard to ResidentDetails.
     const [keyPressed, setKeyPressed] = useState(false);
     const [modal, setModal] = useState(false);
-    
+    const street = props.street;
+    const terrSelected = props.terrSelected;
+
     useEffect(() => {
       const newResJson = JSON.parse(localStorage.getItem('newResArray'));
       if (newResJson) {
@@ -98,7 +100,7 @@ function Resident(props) {
                 className="btn btn-success"
                 onClick={(e)=>{e.preventDefault(); handleModalLaunch()}}>Submit</button>
                 {/* <!-- Modal --> */}
-                <LaunchModal modal={modal} setModal={setModal} setPreview={setPreview} newResArray={newResArray} setNewResArray={setNewResArray} house={house} setHouse={setHouse} setAddResident={setAddResident} setAddHouseAlert={setAddHouseAlert}/>
+                <LaunchModal modal={modal} setModal={setModal} setPreview={setPreview} street={street} terrSelected={terrSelected} newResArray={newResArray} setNewResArray={setNewResArray} house={house} setHouse={setHouse} setAddResident={setAddResident} setAddHouseAlert={setAddHouseAlert}/>
             </div>}
         </form>
         <div className="d-flex justify-content-start mt-5">

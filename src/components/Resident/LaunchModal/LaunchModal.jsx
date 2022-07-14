@@ -34,7 +34,8 @@ function LaunchModal(props) {
         setAddHouseAlert(false);
         setHouse("")
         alert('You added a new house!')
-  }
+        console.log(residents)
+    }
   return (
     <Modal show={modal}>
         <Modal.Header>

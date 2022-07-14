@@ -101,35 +101,21 @@ function Territorios(props) {
     }
   }
   
+  const counter = () => {
+    const numbers = [];
+    for (let i = 1; i <= 23; i++) {
+      numbers.push(i);
+    }
+    return numbers
+  };
+
   return (
     <form>
         <h1 className="territorio_title">Territorio #</h1>
         <select className="form-control" 
         onChange={(e)=>{callTerritorio(e.target.value); setTerrSelected(e.target.value)}}>
             <option>Select a number</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-            <option>11</option>
-            <option>12</option>
-            <option>13</option>
-            <option>14</option>
-            <option>15</option>
-            <option>16</option>
-            <option>17</option>
-            <option>18</option>
-            <option>19</option>
-            <option>20</option>
-            <option>21</option>
-            <option>22</option>
-            <option>23</option>
+            {counter().map((num) => {return <option>{num}</option>})}
         </select>
         <button 
             className="btn btn-primary mt-1" 
