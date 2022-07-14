@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { colRef } from '../../firebase';
-import { addDoc } from "firebase/firestore";
 import ResidentDetails from '../ResidentDetails/ResidentDetails';
 import PreviewBtn from '../PreviewBtn/PreviewBtn';
+import LaunchModal from './LaunchModal/LaunchModal';
 import "./Resident.css";
 
 function Resident(props) {
@@ -15,12 +14,8 @@ function Resident(props) {
     const [isSpliced, setIsSpliced] = useState(false);
     const [toBeEdited, setToBeEdited] = useState({}); //Name and Phone of the person beign edited. From ResidentsCard to ResidentDetails.
     const [keyPressed, setKeyPressed] = useState(false);
-    const residents = {
-        Street: "",
-        Resident: [],
-        House: "",
-        Territory: ""
-    };
+    const [modal, setModal] = useState(false);
+    
     useEffect(() => {
       const newResJson = JSON.parse(localStorage.getItem('newResArray'));
       if (newResJson) {
@@ -32,25 +27,12 @@ function Resident(props) {
         localStorage.setItem('newResArray', JSON.stringify(newResArray));
      }, [newResArray, isSpliced])
     
-
-    function handleSubmitClick() {
+    function handleModalLaunch() {
       if(props.strName === ""){
         alert("Oops, your address is missing!")
       } else {
-          residents.Street = props.street; //from App.js
-          residents.House = document.querySelector('.add_house_js').value;
-          residents.Resident = newResArray;
-          residents.Territory = props.terrSelected;
-          addDoc(colRef, residents)
-          .then(() => {
-            document.querySelector('.resident_form_js').reset();
-            setNewResArray([]);
-          })
-          .catch(e => console.log(e.message));
-          setAddHouseAlert(false);
-          setHouse("")
-          alert('You added a new house!')
-          }
+        setModal(true)
+      }
     }
 
     function handleEnterKey(e) {
@@ -80,7 +62,7 @@ function Resident(props) {
                 className="form-control add_house_js" 
                 name="HouseNumber" 
                 id="formHouseNumber" 
-                placeholder="Ex. 144"
+                placeholder="Ex.000"
                 onKeyPress={(e)=>handleEnterKey(e)}
                 onKeyDown={(e)=>handleKeyDown(e)}
                 required />
@@ -111,16 +93,12 @@ function Resident(props) {
             </div>
             {newResArray.length > 0 && <div className="col-auto my-1">
               <button 
-                className="btn btn-success" 
-                type="submit" 
-                onClick={(e) => {
-                    e.preventDefault()
-                    handleSubmitClick()
-                    setAddResident(false)
-                    setPreview(false)
-                }}>
-                    Submit {newResArray.length} resident{newResArray.length === 1 ? "" : "s"} to House #{house}
-                </button>
+                type="submit"
+                id="submitButton"
+                className="btn btn-success"
+                onClick={(e)=>{e.preventDefault(); handleModalLaunch()}}>Submit</button>
+                {/* <!-- Modal --> */}
+                <LaunchModal modal={modal} setModal={setModal} setPreview={setPreview} newResArray={newResArray} setNewResArray={setNewResArray} house={house} setHouse={setHouse} setAddResident={setAddResident} setAddHouseAlert={setAddHouseAlert}/>
             </div>}
         </form>
         <div className="d-flex justify-content-start mt-5">
