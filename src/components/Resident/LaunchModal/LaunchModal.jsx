@@ -34,7 +34,6 @@ function LaunchModal(props) {
         setAddHouseAlert(false);
         setHouse("")
         alert('You added a new house!')
-        console.log(residents)
     }
   return (
     <Modal show={modal}>
@@ -44,7 +43,9 @@ function LaunchModal(props) {
             </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            Do you want to submit {newResArray.length} resident{newResArray.length === 1 ? "" : "s"} to House #{house}?
+            <p>Do you want to add</p> 
+            <ol>{newResArray.map((res)=><li>{res.Name}</li>)}</ol> 
+            <p>to the {house} of {props.street}?</p>
         </Modal.Body>
         <Modal.Footer>
             <button type="button" className="btn btn-secondary" onClick={()=>setModal(false)}>Wait a sec...</button>

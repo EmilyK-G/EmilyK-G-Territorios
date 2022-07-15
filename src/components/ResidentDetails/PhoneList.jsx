@@ -4,8 +4,7 @@ function PhoneList(props) {
   const [phoneDeleted, setPhoneDeleted] = useState(false);
 
   function handlePhoneDelete(){
-    props.phoneArray.splice(props.idx, 1, "");
-    console.log('spliced');
+    props.phoneArray.splice(props.idx, 1, "")
   }
 
   return (

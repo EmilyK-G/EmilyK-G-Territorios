@@ -115,7 +115,7 @@ function Territorios(props) {
         <select className="form-control" 
         onChange={(e)=>{callTerritorio(e.target.value); setTerrSelected(e.target.value)}}>
             <option>Select a number</option>
-            {counter().map((num) => {return <option>{num}</option>})}
+            {counter().map((num, i) => {return <option key={i}>{num}</option>})}
         </select>
         <button 
             className="btn btn-primary mt-1" 
