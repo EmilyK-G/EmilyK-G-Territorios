@@ -17,6 +17,7 @@ function Resident(props) {
     const [modal, setModal] = useState(false);
     const street = props.street;
     const terrSelected = props.terrSelected;
+    const setShowAlert = props.setShowAlert;
 
     useEffect(() => {
       const newResJson = JSON.parse(localStorage.getItem('newResArray'));
@@ -100,7 +101,7 @@ function Resident(props) {
                 className="btn btn-success"
                 onClick={(e)=>{e.preventDefault(); handleModalLaunch()}}>Submit</button>
                 {/* <!-- Modal --> */}
-                <LaunchModal modal={modal} setModal={setModal} setPreview={setPreview} street={street} terrSelected={terrSelected} newResArray={newResArray} setNewResArray={setNewResArray} house={house} setHouse={setHouse} setAddResident={setAddResident} setAddHouseAlert={setAddHouseAlert}/>
+                <LaunchModal modal={modal} setModal={setModal} setPreview={setPreview} street={street} terrSelected={terrSelected} newResArray={newResArray} setNewResArray={setNewResArray} house={house} setHouse={setHouse} setAddResident={setAddResident} setAddHouseAlert={setAddHouseAlert} setShowAlert={setShowAlert}/>
             </div>}
         </form>
         <div className="d-flex justify-content-start mt-5">

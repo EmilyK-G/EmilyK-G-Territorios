@@ -13,6 +13,7 @@ function LaunchModal(props) {
     const setAddHouseAlert = props.setAddHouseAlert;
     const setModal = props.setModal;
     const modal = props.modal;
+    const setShowAlert = props.setShowAlert;
     const residents = {
         Street: "",
         Resident: [],
@@ -32,9 +33,13 @@ function LaunchModal(props) {
         })
         .catch(e => console.log(e.message));
         setAddHouseAlert(false);
-        setHouse("")
-        alert('You added a new house!')
+        setHouse("");
+        setShowAlert(true);
+        setTimeout(() => {
+            setShowAlert(false)
+         }, 2000)
     }
+
   return (
     <Modal show={modal}>
         <Modal.Header>
