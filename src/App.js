@@ -14,7 +14,7 @@ function App() {
   const [terrSelected, setTerrSelected] = useState("");
   const [strName, setStrName] = useState("");
   const [showAlert, setShowAlert] = useState(false);
-  
+
   
   return (
     <div className="App">
